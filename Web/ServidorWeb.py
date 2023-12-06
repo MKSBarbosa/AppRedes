@@ -1,3 +1,5 @@
+# Hands on 1: Web Server based on HTTP initial
+
 from socket import socket, AF_INET, SOCK_STREAM
 import htmlMessage
 

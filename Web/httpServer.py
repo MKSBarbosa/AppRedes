@@ -1,3 +1,5 @@
+# Hands on 3: Web Server based on HTTP simple
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 class handleRequest(BaseHTTPRequestHandler):

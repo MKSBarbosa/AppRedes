@@ -1,3 +1,5 @@
+#Hands on 2: Web Server based on HTTP
+
 from socket import socket, AF_INET, SOCK_STREAM
 
 with open('./index.html', 'r') as f:
