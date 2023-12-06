@@ -1,0 +1,14 @@
+Geração de chaves no Ubuntu
+
+1) Instalar o ssl
+sudo apt-get install openssl
+
+2) Gerar Certificado e Chave:
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+
+3) Converter Certificado para Formato PEM:
+openssl x509 -in cert.pem -out certificate.pem
+
+4) Verifique o formato dos arquivos:
+openssl x509 -in certificate.pem -text -noout
+openssl rsa -in key.pem -text -noout
