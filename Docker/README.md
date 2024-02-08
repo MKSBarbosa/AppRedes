@@ -22,7 +22,7 @@ Essa arquitetura permite a comunicação entre os contêineres do servidor e do 
 A imagem abaixo ilustra a disposição da arquitetura cliente-servidor:
 
 
-![Arquitetura Cliente-Servidor](docs/imagens/arquitetura.png)
+![Arquitetura Cliente-Servidor](docs/images/arquitetura.png)
 
 
 ### Utilizando Docker Run
