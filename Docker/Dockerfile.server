@@ -1,0 +1,24 @@
+# Use a imagem base do Ubuntu
+FROM ubuntu:latest
+
+# Atualize os pacotes do sistema e instale o Python3 e o gerenciador de pacotes pip
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copie o arquivo requirements.txt para o diretório de trabalho
+COPY requirements.txt .
+
+# Instale as dependências Python especificadas no arquivo requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copie a aplicação Python para o diretório de trabalho
+COPY server.py .
+
+# Execute a aplicação Python quando o contêiner for iniciado
+CMD ["python3", "server.py"]

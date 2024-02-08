@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  servidor:
+    image: server:latest
+    networks:
+      reder-docker-exemplo:
+        ipv4_address: 192.168.70.131
+
+  cliente:
+    image: cliente:latest
+    networks:
+      reder-docker-exemplo:
+        ipv4_address: 192.168.70.135
+
+  cliente1:
+    image: cliente:latest
+    networks:
+      reder-docker-exemplo:
+        ipv4_address: 192.168.70.136
+
+  cliente2:
+    image: cliente:latest
+    networks:
+      reder-docker-exemplo:
+        ipv4_address: 192.168.70.137
+
+networks:
+  reder-docker-exemplo:
+    ipam:
+      config:
+        - subnet: 192.168.70.128/26
