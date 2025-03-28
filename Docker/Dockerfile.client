@@ -1,10 +1,12 @@
 # Use a imagem base do Ubuntu
-FROM ubuntu:latest
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Atualize os pacotes do sistema e instale o Python3 e o gerenciador de pacotes pip
 RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
+    python3  net-tools\
+    vim python3 python3-dev python3-venv python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -14,6 +16,7 @@ WORKDIR /app
 # Copie o arquivo requirements.txt para o diretório de trabalho
 COPY requirements.txt .
 
+RUN pip install --upgrade pip
 # Instale as dependências Python especificadas no arquivo requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 
@@ -21,4 +24,5 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY client.py .
 
 # Execute a aplicação Python quando o contêiner for iniciado
-CMD ["python3", "client.py"]
+# CMD ["python3", "client.py"]
+CMD ["/bin/bash"]

@@ -41,3 +41,28 @@ docker run --name cliente --net reder-docker-exemplo --ip 192.168.70.135 cliente
 docker-compose -f aplication.yaml up server
 docker-compose -f aplication.yaml up
 ```
+
+### Redirecionamento NAT
+
+```
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 9999
+sudo iptables -t nat -L --line-numbers
+sudo iptables -t nat -D PREROUTING 2
+```
+
+### DNS
+```
+sudo vim /etc/hosts
+192.34.1.9 mksb.server
+nslookup mksb.server
+```
+
+
+### Rota Estatica
+
+```
+sudo ip route add <rede_alvo> via <next_hop> dev <interface_local_de_saída>
+#comandos aplicados no host de origem e destigo
+sudo sysctl net.ipv4.conf.all.forwarding=1
+sudo iptables -P FORWARD ACCEPT
+```

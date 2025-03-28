@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  cliente:
+    image: cliente:dhcp
+    networks:
+      - reder-docker-exemplo
+    stdin_open: true
+    tty: true
+
+  servidor:
+    image: server:dhcp
+    networks:
+      - reder-docker-exemplo
+    stdin_open: true
+    tty: true
+
+  cliente1:
+    image: cliente:dhcp
+    networks:
+      - reder-docker-exemplo
+    stdin_open: true
+    tty: true
+
+  cliente2:
+    image: cliente:dhcp
+    networks:
+      - reder-docker-exemplo
+    stdin_open: true
+    tty: true
+
+networks:
+  reder-docker-exemplo:
+    driver: bridge  # Rede bridge padrão
+
+    # ipam:
+    #   config:
+    #     - subnet: 192.168.70.0/24  # Defina conforme sua rede
