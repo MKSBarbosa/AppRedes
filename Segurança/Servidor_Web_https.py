@@ -15,7 +15,7 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(b'<html><body><h1>Hello, World!</h1></body></html>')
 
 # Cria um servidor HTTP com certificados SSL
-httpd = http.server.HTTPServer(('localhost', 443), MyHandler)
+httpd = http.server.HTTPServer(('localhost', 8119), MyHandler)
 
 # Configuração do SSL
 httpd.socket = ssl.wrap_socket(httpd.socket,
@@ -25,5 +25,5 @@ httpd.socket = ssl.wrap_socket(httpd.socket,
                                ssl_version=ssl.PROTOCOL_TLS)
 
 # Inicia o servidor
-print("Servidor HTTPS rodando na porta 443...")
+print("Servidor HTTPS rodando na porta 8119...")
 httpd.serve_forever()

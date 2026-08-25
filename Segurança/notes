@@ -12,3 +12,6 @@ openssl x509 -in cert.pem -out certificate.pem
 4) Verifique o formato dos arquivos:
 openssl x509 -in certificate.pem -text -noout
 openssl rsa -in key.pem -text -noout
+
+
+senha: aularedes

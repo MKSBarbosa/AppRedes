@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  servidor:
+    image: server:dhcp
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./index.html:/app/index.html
+      - ./style.css:/app/style.css
+      - ./serverweb-multiplas-solicitacoes.py:/app/serverweb-multiplas-solicitacoes.py
+    expose:
+      - "9999/tcp"
+    ports:
+      - "9999:9999/tcp"
+    networks:
+      reder-docker-exemplo:
+        ipv4_address: 192.168.70.131
+    command: python3 /app/serverweb-multiplas-solicitacoes.py  # Executa o script Python
+    environment:
+      - PYTHONUNBUFFERED=1  # Para garantir que as saídas do Python sejam exibidas em tempo real
+
+networks:
+  reder-docker-exemplo:
+    ipam:
+      config:
+        - subnet: 192.168.70.0/24  # Defina conforme sua rede
